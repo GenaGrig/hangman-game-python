@@ -74,7 +74,7 @@ def draw_hangman():
         print("|")
         print("|")
         print("|")
-        print("+-------+")
+        print("+-------+\n")
     elif player_lives == 5:
         print("+------------+")
         print("|            |")
@@ -83,7 +83,7 @@ def draw_hangman():
         print("|")
         print("|")
         print("|")
-        print("+-------+")
+        print("+-------+\n")
     elif player_lives == 4:
         print("+------------+")
         print("|            |")
@@ -101,7 +101,7 @@ def draw_hangman():
         print("|           /")
         print("|")
         print("|")
-        print("+-------+")
+        print("+-------+\n")
     elif player_lives == 2:
         print("+------------+")
         print("|            |")
@@ -110,7 +110,7 @@ def draw_hangman():
         print("|           / \\")
         print("|")
         print("|")
-        print("+-------+")
+        print("+-------+\n")
     elif player_lives == 1:
         print("+------------+")
         print("|            |")
@@ -119,7 +119,7 @@ def draw_hangman():
         print("|           / \\")
         print("|")
         print("|")
-        print("+-------+")
+        print("+-------+\n")
     elif player_lives == 0:
         print("+------------+")
         print("|            |")
@@ -128,7 +128,7 @@ def draw_hangman():
         print("|           / \\")
         print("|")
         print("|")
-        print("+-------+")
+        print("+-------+\n")
     
 def get_one_valid_letter():
     '''
@@ -137,17 +137,17 @@ def get_one_valid_letter():
     is_letter_valid = False
     letter = ''
     while is_letter_valid is False:
-        letter = input('Enter guess letter: ')
+        letter = input('Enter guess letter: \n')
         letter = letter.strip().lower()
         if len(letter) <=0 or len(letter) >1:
-            print("You can type in only 1 letter")
+            print("You can type in only 1 letter\n")
         elif letter.isalpha():
             if letter in correctly_guessed_letters or letter in incorrectly_guessed_letters:
-                print("You already guessed this letter" + letter + ",try another one!")
+                print("You already guessed this letter" + ' ' + letter + ",try another one!\n")
             else:
                 is_letter_valid = True
         else:
-            print("Letter must be (a-z)")
+            print("Letter must be (a-z)\n")
 
     return letter
 
@@ -177,7 +177,8 @@ def check_for_game_over():
     if player_lives <= 0:
         game_over = True
         draw_hangman()
-        print('You lost! The word was ' + randomly_chosen_word + ". Try to play again!")
+        print('You lost! The sport was ' + randomly_chosen_word + ". Try to play again!")
+        menu()
     else: 
         guessed_all_letters = True
         for letter in randomly_chosen_word:
@@ -186,7 +187,10 @@ def check_for_game_over():
                 break
         if guessed_all_letters:
             game_over = True
-            print('Congratulations! You won! Try to guess another word!')
+            print('Congratulations! You guessed the sports name ' + randomly_chosen_word + '! Try to guess another sport type!')
+            menu()
+
+
 
 def main():
     '''
@@ -194,7 +198,7 @@ def main():
     '''
     global game_over
 
-    print("------ Welcome to Hangman Sports Quiz ------")
+    print("------ Welcome to Hangman Sports Quiz ------\n")
     choose_random_word()
 
     while game_over is False:
@@ -202,10 +206,23 @@ def main():
         draw_word()
 
         if len(incorrectly_guessed_letters) > 0:
-            print('Incorrect guesses: ')
+            print('Incorrect guesses:')
             print(incorrectly_guessed_letters)
 
         guess_letter()
         check_for_game_over()
 
-main()
+def menu():
+   while True:
+       print('(P) Play Hangman sports game')
+       print('(Q) Quit')
+       choice = input('Enter your choice: ').lower()
+       if choice == 'p':
+           main()
+       elif choice == 'q':
+           return False
+       else:
+           print(f'Not a correct choice: {choice}')
+
+if __name__ == '__main__':
+    menu()
