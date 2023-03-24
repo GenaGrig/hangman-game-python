@@ -178,7 +178,6 @@ def check_for_game_over():
         game_over = True
         draw_hangman()
         print('You lost! The sport was ' + randomly_chosen_word + ". Try to play again!")
-        menu()
     else: 
         guessed_all_letters = True
         for letter in randomly_chosen_word:
@@ -188,8 +187,6 @@ def check_for_game_over():
         if guessed_all_letters:
             game_over = True
             print('Congratulations! You guessed the sports name ' + randomly_chosen_word + '! Try to guess another sport type!')
-            menu()
-
 
 
 def main():
@@ -199,6 +196,8 @@ def main():
     global game_over
 
     print("------ Welcome to Hangman Sports Quiz ------\n")
+    name = input('Enter your name: \n')
+    print(f'Welcome {name}! Try to guess sport name in 6 attempts!')
     choose_random_word()
 
     while game_over is False:
@@ -213,16 +212,16 @@ def main():
         check_for_game_over()
 
 def menu():
-   while True:
-       print('(P) Play Hangman sports game')
-       print('(Q) Quit')
-       choice = input('Enter your choice: ').lower()
-       if choice == 'p':
-           main()
-       elif choice == 'q':
-           return False
-       else:
-           print(f'Not a correct choice: {choice}')
+    while True:
+        print('(P) Play Hangman sports game')
+        print('(Q) Quit')
+        choice = input('Enter your choice: ').lower()
+        if choice == 'p':
+            main()
+        elif choice == 'q':
+            return False
+        else:
+            print(f'Not a correct choice: {choice}')
 
 if __name__ == '__main__':
     menu()
