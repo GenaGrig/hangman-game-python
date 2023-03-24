@@ -211,7 +211,7 @@ def main():
         guess_letter()
         check_for_game_over()
 
-def menu():
+if __name__ == '__main__':
     while True:
         print('(P) Play Hangman sports game')
         print('(Q) Quit')
@@ -219,9 +219,6 @@ def menu():
         if choice == 'p':
             main()
         elif choice == 'q':
-            return False
+            exit()
         else:
             print(f'Not a correct choice: {choice}')
-
-if __name__ == '__main__':
-    menu()
