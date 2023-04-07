@@ -238,7 +238,7 @@ def main():
 
     print('\n')
     print("------ Welcome to Hangman Sports Quiz ------\n".center(width))
-    name = input('Enter your name: '.rjust(150//2))
+    name = input('Enter your name: '.rjust(80//2))
     print('\n')
     print('Welcome' + text_colors.BLUE + ' ' + name + text_colors.END + '! Try to guess sports name in 6 attempts!')
     choose_random_word()
@@ -260,22 +260,19 @@ if __name__ == '__main__':
         print("\n")
 
         print(text_colors.CYAN + """
-          o         o           o           o          o        o__ __o       o          o           o           o          o  
-         <|>       <|>         <|>         <|\        <|>      /v     v\     <|\        /|>         <|>         <|\        <|> 
-         < >       < >         / \         / \\o       / \     />       <\    / \\o     o// \         / \         / \\o       / \ 
-          |         |        o/   \o       \o/ v\     \o/   o/               \o/ v\  /v \o/       o/   \o       \o/ v\     \o/ 
-          o__/_ _\__o       <|__ __|>       |   <\     |   <|       _\__o__   |   <\/>   |       <|__ __|>       |   <\     |  
-          |         |       /       \      / \    \o  / \   \\           |    / \        / \      /       \      / \    \o  / \ 
-         <o>       <o>    o/         \o    \o/     v\ \o/     \         /    \o/        \o/    o/         \o    \o/     v\ \o/ 
-          |         |    /v           v\    |       <\ |       o       o      |          |    /v           v\    |       <\ |  
-         / \       / \  />             <\  / \        < \      <\__ __/>     / \        / \  />             <\  / \        < \ 
-        """ + text_colors.END + '\n\n')
+                 _   _   ___   _   _  _____ ___  ___  ___   _   _ 
+                | | | | / _ \ | \ | ||  __ \|  \/  | / _ \ | \ | |
+                | |_| |/ /_\ \|  \| || |  \/| .  . |/ /_\ \|  \| |
+                |  _  ||  _  || . ` || | __ | |\/| ||  _  || . ` |
+                | | | || | | || |\  || |_\ \| |  | || | | || |\  |
+                \_| |_/\_| |_/\_| \_/ \____/\_|  |_/\_| |_/\_| \_/
+        """ + text_colors.END + '\n')
 
         print('(1) Play Hangman sports game'.center(width))
         print('(2) Play Hangman movie game'.center(width))
         print('  (R) Read the rules of the game'.center(width))
         print('(Q) Quit'.center(width))
-        choice = input('Enter your choice: '.rjust(160//2)).lower()
+        choice = input('Enter your choice: '.rjust(80//2)).lower()
         if choice == '1':
             main()
         elif choice == '2':
