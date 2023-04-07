@@ -47,7 +47,7 @@ class text_colors:
     BOLD = '\033[1m' # bold
     UNDERLINE = '\033[4m' # underline
 
-# 7 different methods to run the game and processes
+# Chooses random word from the list of words
 
 def choose_random_word():
     '''
@@ -63,6 +63,8 @@ def choose_random_word():
     random.seed(time.time())
     randomly_chosen_word = random.choice(acceptable_words)
 
+# Draws the word with dashes instead of those letters that haven't been guessed yet
+
 def draw_word():
     '''
     Will print the word with dashes instead of those letters that haven't been guessed yet
@@ -77,6 +79,8 @@ def draw_word():
         else:
             print('_', end=' ')
     print('')
+
+# Draws the hangman based on the lives left
 
 def draw_hangman():
     '''
@@ -157,6 +161,7 @@ def get_one_valid_letter():
     while is_letter_valid is False:
         letter = input('Enter guess letter: '.rjust(10//2))
         letter = letter.strip().lower()
+        print('\n')
         if len(letter) <=0 or len(letter) >1:
             print(text_colors.WRONG + "You can type in only 1 letter at a time!\n" + text_colors.END)
         elif letter.isalpha():
