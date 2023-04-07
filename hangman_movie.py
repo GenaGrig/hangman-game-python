@@ -56,7 +56,7 @@ def choose_random_word():
     global randomly_chosen_word
     acceptable_words = []
 
-    with open('sports.txt', 'r') as f:
+    with open('movies.txt', 'r') as f:
         for line in f:
             acceptable_words.append(line.strip().lower())
 
@@ -186,10 +186,10 @@ def guess_letter():
     letter = get_one_valid_letter()
     if letter in randomly_chosen_word:
         correctly_guessed_letters.append(letter)
-        print(text_colors.GREEN + 'Correct! ' + text_colors.BOLD + letter.upper() + text_colors.END + text_colors.GREEN + ' is in the sport!\n' + text_colors.END)
+        print(text_colors.GREEN + 'Correct! ' + text_colors.BOLD + letter.upper() + text_colors.END + text_colors.GREEN + ' is in the movie!\n' + text_colors.END)
     else:
         incorrectly_guessed_letters.append(letter)
-        print(text_colors.WRONG + 'Wrong! ' + text_colors.BOLD + letter.upper() + text_colors.END + text_colors.WRONG + ' is not in the sport!\n' + text_colors.END)
+        print(text_colors.WRONG + 'Wrong! ' + text_colors.BOLD + letter.upper() + text_colors.END + text_colors.WRONG + ' is not in the movie!\n' + text_colors.END)
         print(text_colors.WRONG + "You lost a life!\n" + text_colors.END)
         print(text_colors.WARNING + "You have " + str(player_lives) + " lives left!\n" + text_colors.END)
         player_lives -= 1
@@ -205,7 +205,7 @@ def check_for_game_over():
     if player_lives <= 0:
         game_over = True
         draw_hangman()
-        print(text_colors.BOLD + text_colors.WRONG + 'You lost! The sport was ' + randomly_chosen_word.upper() + ". Try to play again!\n" + text_colors.END)
+        print(text_colors.BOLD + text_colors.WRONG + 'You lost! The movie was ' + randomly_chosen_word.upper() + ". Try to play again!\n" + text_colors.END)
         print(text_colors.WRONG + """
             __   __                _                        _ 
             \ \ / /               | |                      | |
@@ -224,8 +224,8 @@ def check_for_game_over():
                 break
         if guessed_all_letters:
             game_over = True
-            print(text_colors.BOLD + text_colors.GREEN + 'Congratulations! You guessed the sports name ' + randomly_chosen_word.upper() 
-            + '! Try to guess another sport type!\n' + text_colors.END)
+            print(text_colors.BOLD + text_colors.GREEN + 'Congratulations! You guessed the movie name ' + randomly_chosen_word.upper() 
+            + '! Try to guess another movie type!\n' + text_colors.END)
             print( text_colors.GREEN + """
             __   __                _    _  _         _ 
             \ \ / /               | |  | |(_)       | |
@@ -253,10 +253,10 @@ def restart_game():
     randomly_chosen_word = ''
 
     while True:
-        restart = input(text_colors.WARNING + 'Do you want to play again or return to menu? (yes/no/menu or y/n/m): '.rjust(10//2) + text_colors.END)
+        restart = input(text_colors.WARNING + 'Do you want to play again or go in menu? (yes/no/menu): '.rjust(10//2) + text_colors.END)
         print('\n')
         if restart.lower() == 'yes' or restart.lower() == 'y':
-            print('Good luck! Try to guess sports name in 6 attempts!\n')
+            print('Good luck! Try to guess movie name in 6 attempts!\n')
             choose_random_word()
             break
         elif restart.lower() == 'no' or restart.lower() == 'n':
@@ -265,7 +265,7 @@ def restart_game():
         elif restart.lower() == 'menu' or restart.lower() == 'm':
             execfile(filename='run.py')
         else:
-            print(text_colors.WRONG + 'Please enter y, n or m!' + text_colors.END)
+            print(text_colors.WRONG + 'Please enter y or n!' + text_colors.END)
 
 def execfile(filename, globals=None, locals=None):
     if globals is None:
@@ -284,10 +284,10 @@ def main():
     global game_over
 
     print('\n')
-    print("------ Welcome to Hangman Sports Quiz ------\n".center(width))
+    print("------ Welcome to Hangman Movie Quiz ------\n".center(width))
     name = input('Enter your name: '.rjust(90//2))
     print('\n')
-    print('Welcome' + text_colors.BLUE + ' ' + name + text_colors.END + '! Try to guess sports name in 6 attempts!\n')
+    print('Welcome' + text_colors.BLUE + ' ' + name + text_colors.END + '! Try to guess movie name in 6 attempts!\n')
     choose_random_word()
 
     while game_over is False:
@@ -303,37 +303,4 @@ def main():
         check_for_game_over()
 
 if __name__ == '__main__':
-    while True:
-        print("\n")
-
-        print(text_colors.CYAN + """
-                 _   _   ___   _   _  _____ ___  ___  ___   _   _ 
-                | | | | / _ \ | \ | ||  __ \|  \/  | / _ \ | \ | |
-                | |_| |/ /_\ \|  \| || |  \/| .  . |/ /_\ \|  \| |
-                |  _  ||  _  || . ` || | __ | |\/| ||  _  || . ` |
-                | | | || | | || |\  || |_\ \| |  | || | | || |\  |
-                \_| |_/\_| |_/\_| \_/ \____/\_|  |_/\_| |_/\_| \_/
-        """ + text_colors.END + '\n')
-
-        print('(1) Play Hangman sports game'.center(width))
-        print('(2) Play Hangman movie game'.center(width))
-        print('  (R) Read the rules of the game'.center(width))
-        print('(Q) Quit'.center(width))
-        choice = input('Enter your choice: '.rjust(100//2)).lower()
-        if choice == '1':
-            main()
-        elif choice == '2':
-            execfile(filename='hangman_movie.py')
-        elif choice == 'r':
-            print(text_colors.CYAN + '''
-            1. You have 6 attempts to guess the correct sport name.
-            2. You can guess a letter only (a-z), not the whole word.
-            3. If you guess all the letters, you win the game.
-            4. If you guess 6 letters incorrectly, you lose the game.
-            ''' + text_colors.END)
-            main_menu = input(text_colors.CYAN + " Press enter to return to the main menu  ".rjust(105//2) + text_colors.END)
-        elif choice == 'q':
-            print(text_colors.BOLD + text_colors.WARNING + 'Thank you for playing!'.center(width) + text_colors.END)
-            break
-        else:
-            print(text_colors.WRONG + f'Not a correct choice: {choice}' + text_colors.END)
+    main()
