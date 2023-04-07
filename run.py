@@ -56,7 +56,7 @@ def choose_random_word():
     global randomly_chosen_word
     acceptable_words = []
 
-    with open('words.txt', 'r') as f:
+    with open('sports.txt', 'r') as f:
         for line in f:
             acceptable_words.append(line.strip().lower())
 
@@ -150,12 +150,12 @@ def draw_hangman():
     
 def get_one_valid_letter():
     '''
-    Some sort of validation for player entering only one letter at a time with no repeats
+    Validation for player input - entering only one letter at a time and no repeats
     '''
     is_letter_valid = False
     letter = ''
     while is_letter_valid is False:
-        letter = input('Enter guess letter: \n')
+        letter = input('Enter guess letter: '.rjust(10//2))
         letter = letter.strip().lower()
         if len(letter) <=0 or len(letter) >1:
             print(text_colors.WRONG + "You can type in only 1 letter at a time!\n" + text_colors.END)
@@ -181,8 +181,10 @@ def guess_letter():
     letter = get_one_valid_letter()
     if letter in randomly_chosen_word:
         correctly_guessed_letters.append(letter)
+        print(text_colors.GREEN + 'Correct! ' + text_colors.BOLD + letter.upper() + text_colors.END + text_colors.GREEN + ' is in the sport!\n' + text_colors.END)
     else:
         incorrectly_guessed_letters.append(letter)
+        print(text_colors.WRONG + 'Wrong! ' + text_colors.BOLD + letter.upper() + text_colors.END + text_colors.WRONG + ' is not in the sport!\n' + text_colors.END)
         player_lives -= 1
 
 def check_for_game_over():
@@ -234,8 +236,10 @@ def main():
     '''
     global game_over
 
-    print("------ Welcome to Hangman Sports Quiz ------\n")
-    name = input('Enter your name: \n')
+    print('\n')
+    print("------ Welcome to Hangman Sports Quiz ------\n".center(width))
+    name = input('Enter your name: '.rjust(150//2))
+    print('\n')
     print('Welcome' + text_colors.BLUE + ' ' + name + text_colors.END + '! Try to guess sports name in 6 attempts!')
     choose_random_word()
 
@@ -244,8 +248,9 @@ def main():
         draw_word()
 
         if len(incorrectly_guessed_letters) > 0:
-            print('Incorrect guesses:')
+            print(text_colors.WARNING + 'Incorrect guesses:' + text_colors.END)
             print(incorrectly_guessed_letters)
+            print('\n')
 
         guess_letter()
         check_for_game_over()
@@ -268,7 +273,7 @@ if __name__ == '__main__':
 
         print('(1) Play Hangman sports game'.center(width))
         print('(2) Play Hangman movie game'.center(width))
-        print('(R) Read the rules of the game'.center(width))
+        print('  (R) Read the rules of the game'.center(width))
         print('(Q) Quit'.center(width))
         choice = input('Enter your choice: '.rjust(160//2)).lower()
         if choice == '1':
