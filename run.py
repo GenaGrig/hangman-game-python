@@ -1,5 +1,6 @@
 import random
 import time
+import os
 
 '''
 HANGMAN GAME
@@ -29,11 +30,15 @@ player_lives = 6
 # Global variable for game over
 game_over = False
 
+# Determine width of terminal
+width = os.get_terminal_size().columns
+
 class text_colors:
     '''
     Class for text colors
     '''
     HEADER = '\033[95m' # purple
+    CYAN = '\033[96m' # cyan
     BLUE = '\033[94m' # blue
     GREEN = '\033[92m' # green
     WARNING = '\033[93m' # yellow
@@ -191,7 +196,16 @@ def check_for_game_over():
     if player_lives <= 0:
         game_over = True
         draw_hangman()
-        print(text_colors.BOLD + text_colors.WRONG + 'You lost! The sport was ' + randomly_chosen_word.upper() + ". Try to play again!" + text_colors.END)
+        print(text_colors.BOLD + text_colors.WRONG + 'You lost! The sport was ' + randomly_chosen_word.upper() + ". Try to play again!\n" + text_colors.END)
+        print(text_colors.WRONG + """
+      __   __                _                        _ 
+      \ \ / /               | |                      | |
+       \ V /   ___   _   _  | |      ___   ___   ___ | |
+        \ /   / _ \ | | | | | |     / _ \ / __| / _ \| |
+        | |  | (_) || |_| | | |____| (_) |\__ \|  __/|_|
+        \_/   \___/  \__,_| \_____/ \___/ |___/ \___|(_)
+        """ + text_colors.END)
+
     else: 
         guessed_all_letters = True
         for letter in randomly_chosen_word:
@@ -202,12 +216,16 @@ def check_for_game_over():
             game_over = True
             print(text_colors.BOLD + text_colors.GREEN + 'Congratulations! You guessed the sports name ' + randomly_chosen_word.upper() 
             + '! Try to guess another sport type!\n' + text_colors.END)
-            print("__   __                _    _  _         _ ")
-            print("\ \ / /               | |  | |(_)       | |")
-            print(" \ V /   ___   _   _  | |  | | _  _ __  | |")
-            print("  \ /   / _ \ | | | | | |/\| || || '_ \ | |")
-            print("  | |  | (_) || |_| | \  /\  /| || | | ||_|")
-            print("  \_/   \___/  \__,_|  \/  \/ |_||_| |_|(_) \n\n")
+            print( text_colors.GREEN + """
+            __   __                _    _  _         _ 
+            \ \ / /               | |  | |(_)       | |
+             \ V /   ___   _   _  | |  | | _  _ __  | |
+              \ /   / _ \ | | | | | |/\| || || '_ \ | |
+              | |  | (_) || |_| | \  /\  /| || | | ||_|
+              \_/   \___/  \__,_|  \/  \/ |_||_| |_|(_)
+            """ + text_colors.END)
+
+
 
 
 def main():
@@ -218,7 +236,7 @@ def main():
 
     print("------ Welcome to Hangman Sports Quiz ------\n")
     name = input('Enter your name: \n')
-    print(f'Welcome' + text_colors.BLUE + {name} + text_colors.END + '! Try to guess sport name in 6 attempts!')
+    print('Welcome' + text_colors.BLUE + ' ' + name + text_colors.END + '! Try to guess sports name in 6 attempts!')
     choose_random_word()
 
     while game_over is False:
@@ -235,24 +253,37 @@ def main():
 if __name__ == '__main__':
     while True:
         print("\n")
-        print("  o         o           o           o          o        o__ __o       o          o           o           o          o  ")
-        print(" <|>       <|>         <|>         <|\        <|>      /v     v\     <|\        /|>         <|>         <|\        <|> ") 
-        print(" < >       < >         / \         / \\o       / \     />       <\    / \\o     o// \         / \         / \\o       / \ ")
-        print("  |         |        o/   \o       \o/ v\     \o/   o/               \o/ v\  /v \o/       o/   \o       \o/ v\     \o/ ")
-        print("  o__/_ _\__o       <|__ __|>       |   <\     |   <|       _\__o__   |   <\/>   |       <|__ __|>       |   <\     |  ") 
-        print("  |         |       /       \      / \    \o  / \   \\          |     / \        / \      /       \      / \    \o  / \ ")
-        print(" <o>       <o>    o/         \o    \o/     v\ \o/     \         /    \o/        \o/    o/         \o    \o/     v\ \o/ ") 
-        print("  |         |    /v           v\    |       <\ |       o       o      |          |    /v           v\    |       <\ |  ")
-        print(" / \       / \  />             <\  / \        < \      <\__ __/>     / \        / \  />             <\  / \        < \ \n\n")
-        print('(1) Play Hangman sports game')
-        print('(2) Play Hangman movie game')
-        print('(Q) Quit')
-        choice = input('Enter your choice: ').lower()
+
+        print(text_colors.CYAN + """
+          o         o           o           o          o        o__ __o       o          o           o           o          o  
+         <|>       <|>         <|>         <|\        <|>      /v     v\     <|\        /|>         <|>         <|\        <|> 
+         < >       < >         / \         / \\o       / \     />       <\    / \\o     o// \         / \         / \\o       / \ 
+          |         |        o/   \o       \o/ v\     \o/   o/               \o/ v\  /v \o/       o/   \o       \o/ v\     \o/ 
+          o__/_ _\__o       <|__ __|>       |   <\     |   <|       _\__o__   |   <\/>   |       <|__ __|>       |   <\     |  
+          |         |       /       \      / \    \o  / \   \\           |    / \        / \      /       \      / \    \o  / \ 
+         <o>       <o>    o/         \o    \o/     v\ \o/     \         /    \o/        \o/    o/         \o    \o/     v\ \o/ 
+          |         |    /v           v\    |       <\ |       o       o      |          |    /v           v\    |       <\ |  
+         / \       / \  />             <\  / \        < \      <\__ __/>     / \        / \  />             <\  / \        < \ 
+        """ + text_colors.END + '\n\n')
+
+        print('(1) Play Hangman sports game'.center(width))
+        print('(2) Play Hangman movie game'.center(width))
+        print('(R) Read the rules of the game'.center(width))
+        print('(Q) Quit'.center(width))
+        choice = input('Enter your choice: '.rjust(160//2)).lower()
         if choice == '1':
             main()
         elif choice == '2':
             main()
+        elif choice == 'r':
+            print(text_colors.CYAN + '''
+            1. You have 6 attempts to guess the correct sport name.
+            2. You can guess a letter only (a-z), not the whole word.
+            3. If you guess all the letters, you win the game.
+            4. If you guess 6 letters incorrectly, you lose the game.
+            ''' + text_colors.END)
         elif choice == 'q':
+            print(text_colors.BOLD + text_colors.WARNING + 'Thank you for playing!'.center(width) + text_colors.END)
             break
         else:
             print(text_colors.WRONG + f'Not a correct choice: {choice}' + text_colors.END)
