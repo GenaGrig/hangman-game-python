@@ -57,7 +57,7 @@ def choose_random_word():
     global randomly_chosen_word
     acceptable_words = []
 
-    with open('movies.txt', 'r') as f:
+    with open('countries.txt', 'r') as f:
         for line in f:
             acceptable_words.append(line.strip().lower())
 
@@ -146,10 +146,10 @@ def guess_letter():
 
     if letter in randomly_chosen_word:
         correctly_guessed_letters.append(letter)
-        print(text_colors.GREEN + 'Correct! ' + text_colors.BOLD + letter.upper() + text_colors.END + text_colors.GREEN + ' is in the movie!\n' + text_colors.END)
+        print(text_colors.GREEN + 'Correct! ' + text_colors.BOLD + letter.upper() + text_colors.END + text_colors.GREEN + ' is in the country name!\n' + text_colors.END)
     else:
         incorrectly_guessed_letters.append(letter)
-        print(text_colors.WRONG + 'Wrong! ' + text_colors.BOLD + letter.upper() + text_colors.END + text_colors.WRONG + ' is not in the movie!\n' + text_colors.END)
+        print(text_colors.WRONG + 'Wrong! ' + text_colors.BOLD + letter.upper() + text_colors.END + text_colors.WRONG + ' is not in the country name!\n' + text_colors.END)
         print(text_colors.WRONG + "You lost a life!\n" + text_colors.END)
         print(text_colors.WARNING + "You have " + str(player_lives) + " lives left!\n" + text_colors.END)
         player_lives -= 1
@@ -166,7 +166,7 @@ def check_for_game_over():
     if player_lives == 0:
         game_over = True
         draw_hangman()
-        print(text_colors.BOLD + text_colors.WRONG + 'You lost! The movie was ' + randomly_chosen_word.upper() + ". Try to play again!\n" + text_colors.END)
+        print(text_colors.BOLD + text_colors.WRONG + 'You lost! The country name was ' + randomly_chosen_word.upper() + ". Try to play again!\n" + text_colors.END)
         print(text_colors.WRONG + """
             __   __                _                        _ 
             \ \ / /               | |                      | |
@@ -180,8 +180,8 @@ def check_for_game_over():
 
     if len(correctly_guessed_letters) == len(set(randomly_chosen_word.replace(' ', ''))):
         game_over = True
-        print(text_colors.BOLD + text_colors.GREEN + 'Congratulations! You guessed the movie name ' + randomly_chosen_word.upper() 
-        + '! Try to guess another movie!\n' + text_colors.END)
+        print(text_colors.BOLD + text_colors.GREEN + 'Congratulations! You guessed the country name ' + randomly_chosen_word.upper() 
+        + '! Try to guess another country!\n' + text_colors.END)
         print( text_colors.GREEN + """
             __   __                _    _  _         _ 
             \ \ / /               | |  | |(_)       | |
@@ -212,7 +212,7 @@ def restart_game():
         restart = input(text_colors.WARNING + 'Do you want to play again or go in menu? (yes/no/menu): '.rjust(10//2) + text_colors.END)
         print('\n')
         if restart.lower() == 'yes' or restart.lower() == 'y':
-            print('Good luck! Try to guess movie name in 6 attempts!\n')
+            print('Good luck! Try to guess country name in 6 attempts!\n')
             choose_random_word()
             break
         elif restart.lower() == 'no' or restart.lower() == 'n':
@@ -312,10 +312,10 @@ def main():
     global game_over
 
     print('\n')
-    print("------ Welcome to Hangman Movie Quiz ------\n".center(width))
+    print("------ Welcome to Hangman Country Quiz ------\n".center(width))
     name = input('Enter your name: '.rjust(90//2))
     print('\n')
-    print('Welcome' + text_colors.BLUE + ' ' + name + text_colors.END + '! Try to guess movie name in 6 attempts!\n')
+    print('Welcome' + text_colors.BLUE + ' ' + name + text_colors.END + '! Try to guess country name in 6 attempts!\n')
     choose_random_word()
 
     while game_over is False:

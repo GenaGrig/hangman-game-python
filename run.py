@@ -318,8 +318,9 @@ if __name__ == '__main__':
                 \_| |_/\_| |_/\_| \_/ \____/\_|  |_/\_| |_/\_| \_/
         """ + text_colors.END + '\n')
 
-        print('(1) Play Hangman sports game'.center(width))
-        print('(2) Play Hangman movie game'.center(width))
+        print('(1) Play Hangman Sports'.center(width))
+        print('(2) Play Hangman Movies'.center(width))
+        print('(3) Play Hangman Countries'.center(width))
         print('  (R) Read the rules of the game'.center(width))
         print('(Q) Quit'.center(width))
         choice = input('Enter your choice: '.rjust(100//2)).lower()
@@ -327,9 +328,11 @@ if __name__ == '__main__':
             main()
         elif choice == '2':
             execfile(filename='hangman_movie.py')
+        elif choice == '3':
+            execfile(filename='hangman_countries.py')
         elif choice == 'r':
             print(text_colors.CYAN + '''
-            1. You have 6 attempts to guess the correct sport name.
+            1. You have 6 attempts to guess the correct word.
             2. You can guess a letter only (a-z), not the whole word.
             3. If you guess all the letters, you win the game.
             4. If you guess 6 letters incorrectly, you lose the game.
