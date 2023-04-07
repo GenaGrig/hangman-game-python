@@ -287,6 +287,7 @@ if __name__ == '__main__':
             3. If you guess all the letters, you win the game.
             4. If you guess 6 letters incorrectly, you lose the game.
             ''' + text_colors.END)
+            main_menu = input(text_colors.CYAN + " Press enter to return to the main menu  ".rjust(105//2) + text_colors.END)
         elif choice == 'q':
             print(text_colors.BOLD + text_colors.WARNING + 'Thank you for playing!'.center(width) + text_colors.END)
             break
