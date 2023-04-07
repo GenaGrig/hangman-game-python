@@ -185,6 +185,8 @@ def guess_letter():
     else:
         incorrectly_guessed_letters.append(letter)
         print(text_colors.WRONG + 'Wrong! ' + text_colors.BOLD + letter.upper() + text_colors.END + text_colors.WRONG + ' is not in the sport!\n' + text_colors.END)
+        print(text_colors.WRONG + "You lost a life!\n" + text_colors.END)
+        print(text_colors.WARNING + "You have " + str(player_lives) + " lives left!\n" + text_colors.END)
         player_lives -= 1
 
 def check_for_game_over():
@@ -200,13 +202,14 @@ def check_for_game_over():
         draw_hangman()
         print(text_colors.BOLD + text_colors.WRONG + 'You lost! The sport was ' + randomly_chosen_word.upper() + ". Try to play again!\n" + text_colors.END)
         print(text_colors.WRONG + """
-      __   __                _                        _ 
-      \ \ / /               | |                      | |
-       \ V /   ___   _   _  | |      ___   ___   ___ | |
-        \ /   / _ \ | | | | | |     / _ \ / __| / _ \| |
-        | |  | (_) || |_| | | |____| (_) |\__ \|  __/|_|
-        \_/   \___/  \__,_| \_____/ \___/ |___/ \___|(_)
+            __   __                _                        _ 
+            \ \ / /               | |                      | |
+             \ V /   ___   _   _  | |      ___   ___   ___ | |
+              \ /   / _ \ | | | | | |     / _ \ / __| / _ \| |
+              | |  | (_) || |_| | | |____| (_) |\__ \|  __/|_|
+              \_/   \___/  \__,_| \_____/ \___/ |___/ \___|(_)
         """ + text_colors.END)
+        main()
 
     else: 
         guessed_all_letters = True
@@ -226,9 +229,7 @@ def check_for_game_over():
               | |  | (_) || |_| | \  /\  /| || | | ||_|
               \_/   \___/  \__,_|  \/  \/ |_||_| |_|(_)
             """ + text_colors.END)
-
-
-
+            main()
 
 def main():
     '''
@@ -238,9 +239,9 @@ def main():
 
     print('\n')
     print("------ Welcome to Hangman Sports Quiz ------\n".center(width))
-    name = input('Enter your name: '.rjust(80//2))
+    name = input('Enter your name: '.rjust(90//2))
     print('\n')
-    print('Welcome' + text_colors.BLUE + ' ' + name + text_colors.END + '! Try to guess sports name in 6 attempts!')
+    print('Welcome' + text_colors.BLUE + ' ' + name + text_colors.END + '! Try to guess sports name in 6 attempts!\n')
     choose_random_word()
 
     while game_over is False:
@@ -272,7 +273,7 @@ if __name__ == '__main__':
         print('(2) Play Hangman movie game'.center(width))
         print('  (R) Read the rules of the game'.center(width))
         print('(Q) Quit'.center(width))
-        choice = input('Enter your choice: '.rjust(80//2)).lower()
+        choice = input('Enter your choice: '.rjust(100//2)).lower()
         if choice == '1':
             main()
         elif choice == '2':
