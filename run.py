@@ -29,6 +29,19 @@ player_lives = 6
 # Global variable for game over
 game_over = False
 
+class text_colors:
+    '''
+    Class for text colors
+    '''
+    HEADER = '\033[95m' # purple
+    BLUE = '\033[94m' # blue
+    GREEN = '\033[92m' # green
+    WARNING = '\033[93m' # yellow
+    WRONG = '\033[91m' # red
+    END = '\033[0m' # white
+    BOLD = '\033[1m' # bold
+    UNDERLINE = '\033[4m' # underline
+
 # 7 different methods to run the game and processes
 
 def choose_random_word():
@@ -140,14 +153,15 @@ def get_one_valid_letter():
         letter = input('Enter guess letter: \n')
         letter = letter.strip().lower()
         if len(letter) <=0 or len(letter) >1:
-            print("You can type in only 1 letter\n")
+            print(text_colors.WRONG + "You can type in only 1 letter at a time!\n" + text_colors.END)
         elif letter.isalpha():
             if letter in correctly_guessed_letters or letter in incorrectly_guessed_letters:
-                print("You already guessed this letter" + ' ' + letter + ",try another one!\n")
+                print(text_colors.WRONG + "You already guessed letter" + ' ' + text_colors.BOLD + letter.upper() 
+                + text_colors.END + text_colors.WRONG + ", try another one!\n" + text_colors.END)
             else:
                 is_letter_valid = True
         else:
-            print("Letter must be (a-z)\n")
+            print(text_colors.WRONG + "You must enter a letter (a-z)!\n" + text_colors.END)
 
     return letter
 
@@ -177,7 +191,7 @@ def check_for_game_over():
     if player_lives <= 0:
         game_over = True
         draw_hangman()
-        print('You lost! The sport was ' + randomly_chosen_word + ". Try to play again!")
+        print(text_colors.BOLD + text_colors.WRONG + 'You lost! The sport was ' + randomly_chosen_word.upper() + ". Try to play again!" + text_colors.END)
     else: 
         guessed_all_letters = True
         for letter in randomly_chosen_word:
@@ -186,7 +200,8 @@ def check_for_game_over():
                 break
         if guessed_all_letters:
             game_over = True
-            print('Congratulations! You guessed the sports name ' + randomly_chosen_word + '! Try to guess another sport type!')
+            print(text_colors.BOLD + text_colors.GREEN + 'Congratulations! You guessed the sports name ' + randomly_chosen_word.upper() 
+            + '! Try to guess another sport type!' + text_colors.END)
 
 
 def main():
