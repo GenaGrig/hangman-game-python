@@ -1,0 +1,72 @@
+There could be a problem with how correctly_guessed_letters is being updated. Make sure that the code that 
+updates this variable is correctly adding new letters when the player guesses them.
+
+There could be a problem with the guessed_all_letters logic. For example, if guessed_all_letters is 
+initialized to True at the beginning of the loop, it will not correctly identify if the player has not 
+guessed all the letters. Instead, consider initializing guessed_all_letters to False and only changing it 
+to True if all the letters have been guessed.
+
+There could be a problem with how the function is being called. Make sure that the function is being called 
+at the appropriate time and with the correct arguments.
+
+There could be a problem with the input data. Make sure that randomly_chosen_word is correctly set to a 
+valid movie name.
+
+Your best bet is to print to terminal any variable's you are using along the way
+
+You'll see things a lot clearer and be able to direct the logic as neccessary
+
+global randomly_chosen_word
+
+    # List of words
+
+    words = ['basketball', 'football', 'baseball', 'soccer', 'tennis', 'volleyball', 'rugby', 'golf', 'hockey', 'boxing', 'wrestling', 'swimming', 'diving', 'gymnastics', 'skiing', 'snowboarding', 'surfing', 'cycling', 'running', 'archery', 'badminton', 'bowling', 'cricket', 'darts', 'fencing', 'gymnastics', 'handball', 'hockey', 'horseback riding', 'lacrosse', 'polo', 'rowing', 'rugby', 'sailing', 'shooting', 'skateboarding', 'skiing', 'snowboarding', 'surfing', 'swimming', 'table tennis', 'tennis', 'volleyball', 'water polo', 'weightlifting', 'wrestling', 'american football', 'baseball', 'basketball', 'bowling', 'boxing', 'cheerleading', 'cricket', 'curling', 'darts', 'diving', 'fencing', 'football', 'golf', 'gymnastics', 'hockey', 'horseback riding', 'lacrosse', 'polo', 'rowing', 'rugby', 'sailing', 'shooting', 'skateboarding', 'skiing', 'snowboarding', 'surfing', 'swimming', 'table tennis', 'tennis', 'volleyball', 'water polo', 'weightlifting', 'wrestling', 'archery', 'badminton', 'baseball', 'basketball', 'bowling', 'boxing', 'cheerleading', 'cricket', 'curling', 'darts', 'diving', 'fencing', 'football', 'golf', 'gymnastics', 'hockey', 'horseback riding', 'lacrosse', 'polo', 'rowing', 'rugby', 'sailing', 'shooting', 'skateboarding', 'skiing', 'snowboarding', 'surfing', 'swimming', 'table tennis', 'tennis', 'volleyball', 'water polo', 'weightlifting', 'wrestling', 'american football', 'baseball', 'basketball', 'bowling', 'boxing', 'cheerleading', 'cricket',
+
+
+    # Choose random word from the list of words
+    random.seed(time.time())
+    randomly_chosen_word = random.choice(words)
+
+# Checks if the letter is in the word
+
+def check_letter(letter):
+    '''
+    Will check if the letter is in the word
+    '''
+    global correctly_guessed_letters
+    global incorrectly_guessed_letters
+    global randomly_chosen_word
+    global player_lives
+    global game_over
+
+    if letter in randomly_chosen_word:
+        correctly_guessed_letters.append(letter)
+    else:
+        incorrectly_guessed_letters.append(letter)
+        player_lives -= 1
+
+    if player_lives == 0:
+        game_over = True
+        print(text_colors.WRONG + 'You lost! The word was: ' + randomly_chosen_word + text_colors.END)
+
+    if len(correctly_guessed_letters) == len(set(randomly_chosen_word)):
+        game_over = True
+        print(text_colors.GREEN + 'You won! The word was: ' + randomly_chosen_word + text_colors.END)
+
+# Draws the letters that have been guessed
+
+def draw_guessed_letters():
+    '''
+    Will draw the letters that have been guessed
+    '''
+    global correctly_guessed_letters
+    global incorrectly_guessed_letters
+
+    print('Correctly guessed letters: ', end='')
+    for letter in correctly_guessed_letters:
+        print(letter, end=' ')
+    print('')
+    print('Incorrectly guessed letters: ', end='')
+    for letter in incorrectly_guessed_letters:
+        print(letter, end=' ')
+    print('')

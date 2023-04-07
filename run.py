@@ -53,6 +53,9 @@ def choose_random_word():
     '''
     Will choose a random word from the list of predefined words
     '''
+
+    global randomly_chosen_word
+
     global randomly_chosen_word
     acceptable_words = []
 
@@ -79,78 +82,6 @@ def draw_word():
         else:
             print('_', end=' ')
     print('')
-
-# Draws the hangman based on the lives left
-
-def draw_hangman():
-    '''
-    Will draw our hangman based on the lives left.
-    '''
-    global player_lives
-
-    if player_lives == 6:
-        print("+------------+")
-        print("|            |")
-        print("|")
-        print("|")
-        print("|")
-        print("|")
-        print("|")
-        print("+-------+\n")
-    elif player_lives == 5:
-        print("+------------+")
-        print("|            |")
-        print("|            O")
-        print("|")
-        print("|")
-        print("|")
-        print("|")
-        print("+-------+\n")
-    elif player_lives == 4:
-        print("+------------+")
-        print("|            |")
-        print("|            O")
-        print("|            |")
-        print("|")
-        print("|")
-        print("|")
-        print("+-------+")
-    elif player_lives == 3:
-        print("+------------+")
-        print("|            |")
-        print("|            O")
-        print("|            |")
-        print("|           /")
-        print("|")
-        print("|")
-        print("+-------+\n")
-    elif player_lives == 2:
-        print("+------------+")
-        print("|            |")
-        print("|            O")
-        print("|            |")
-        print("|           / \\")
-        print("|")
-        print("|")
-        print("+-------+\n")
-    elif player_lives == 1:
-        print("+------------+")
-        print("|            |")
-        print("|            O")
-        print("|            |\\")
-        print("|           / \\")
-        print("|")
-        print("|")
-        print("+-------+\n")
-    elif player_lives == 0:
-        print("+------------+")
-        print("|            |")
-        print("|            O")
-        print("|           /|\\")
-        print("|           / \\")
-        print("|")
-        print("|")
-        print("+-------+\n")
     
 def get_one_valid_letter():
     '''
@@ -301,6 +232,78 @@ def main():
 
         guess_letter()
         check_for_game_over()
+
+# Draws the hangman based on the lives left
+
+def draw_hangman():
+    '''
+    Will draw our hangman based on the lives left.
+    '''
+    global player_lives
+
+    if player_lives == 6:
+        print("+------------+")
+        print("|            |")
+        print("|")
+        print("|")
+        print("|")
+        print("|")
+        print("|")
+        print("+-------+\n")
+    elif player_lives == 5:
+        print("+------------+")
+        print("|            |")
+        print("|            O")
+        print("|")
+        print("|")
+        print("|")
+        print("|")
+        print("+-------+\n")
+    elif player_lives == 4:
+        print("+------------+")
+        print("|            |")
+        print("|            O")
+        print("|            |")
+        print("|")
+        print("|")
+        print("|")
+        print("+-------+")
+    elif player_lives == 3:
+        print("+------------+")
+        print("|            |")
+        print("|            O")
+        print("|            |")
+        print("|           /")
+        print("|")
+        print("|")
+        print("+-------+\n")
+    elif player_lives == 2:
+        print("+------------+")
+        print("|            |")
+        print("|            O")
+        print("|            |")
+        print("|           / \\")
+        print("|")
+        print("|")
+        print("+-------+\n")
+    elif player_lives == 1:
+        print("+------------+")
+        print("|            |")
+        print("|            O")
+        print("|            |\\")
+        print("|           / \\")
+        print("|")
+        print("|")
+        print("+-------+\n")
+    elif player_lives == 0:
+        print("+------------+")
+        print("|            |")
+        print("|            O")
+        print("|           /|\\")
+        print("|           / \\")
+        print("|")
+        print("|")
+        print("+-------+\n")
 
 if __name__ == '__main__':
     while True:
