@@ -33,7 +33,7 @@ game_over = False
 # Determine width of terminal
 width = os.get_terminal_size().columns
 
-class text_colors:
+class text_colors: # Class for text colors
     '''
     Class for text colors
     '''
@@ -126,7 +126,7 @@ def guess_letter():
         print(text_colors.WARNING + "You have " + str(player_lives - 1) + " lives left!\n" + text_colors.END)
         player_lives -= 1
 
-def check_for_game_over():
+def check_for_game_over():  # Checks if player won or lost
     '''
     Checks if player won or lost
     '''
@@ -168,7 +168,7 @@ def check_for_game_over():
             """ + text_colors.END)
             restart_game()
 
-def restart_game():
+def restart_game():  # Restarts the game or returns to menu
     '''
     Restarts the game
     '''
@@ -201,7 +201,7 @@ def restart_game():
         else:
             print(text_colors.WRONG + 'Please enter y, n or m!' + text_colors.END)
 
-def execfile(filename, globals=None, locals=None):
+def execfile(filename, globals=None, locals=None):   # Runs the file with the given name in the global and local namespace dictionaries provided as globals and locals.
     if globals is None:
         globals = {}
     globals.update({
@@ -211,14 +211,14 @@ def execfile(filename, globals=None, locals=None):
     with open(filename, 'rb') as file:
         exec(compile(file.read(), filename, 'exec'), globals, locals)
 
-def clear_screen():
+def clear_screen():  # Clears the screen
     '''
     Clears the screen
     '''
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-def main():
+def main():  # Main function of the game
     '''
     Main functions of application and entry point of the game
     '''
@@ -315,7 +315,10 @@ def draw_hangman():
         print("|")
         print("+-------+\n")
 
-if __name__ == '__main__':
+# Entry point of the game and main function of the application which will be executed first when the game is started by the user 
+# and will call the main function of the game to start the game and play it.
+
+if __name__ == '__main__':  
     while True:
         print("\n")
 
