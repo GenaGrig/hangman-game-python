@@ -136,7 +136,7 @@ def check_for_game_over():
     if player_lives <= 0:
         game_over = True
         draw_hangman()
-        print(text_colors.BOLD + text_colors.WRONG + 'You lost! The sport was ' + randomly_chosen_word.upper() + ". Try to play again!\n" + text_colors.END)
+        print(text_colors.BOLD + text_colors.WRONG + 'You lost! The sport was ' + randomly_chosen_word.upper() + ".\n Try to play again!\n" + text_colors.END)
         print(text_colors.WRONG + """
             __   __                _                        _ 
             \ \ / /               | |                      | |
@@ -156,7 +156,7 @@ def check_for_game_over():
         if guessed_all_letters:
             game_over = True
             print(text_colors.BOLD + text_colors.GREEN + 'Congratulations! You guessed the sports name ' + randomly_chosen_word.upper() 
-            + '! Try to guess another sport type!\n' + text_colors.END)
+            + '! \n Try to guess another sport type!\n' + text_colors.END)
             print( text_colors.GREEN + """
             __   __                _    _  _         _ 
             \ \ / /               | |  | |(_)       | |
@@ -340,6 +340,6 @@ if __name__ == '__main__':
             main_menu = input(text_colors.CYAN + " Press enter to return to the main menu  ".rjust(105//2) + text_colors.END)
         elif choice == 'q':
             print(text_colors.BOLD + text_colors.WARNING + 'Thank you for playing!'.center(width) + text_colors.END)
-            break
+            exit()
         else:
             print(text_colors.WRONG + f'Not a correct choice: {choice}' + text_colors.END)

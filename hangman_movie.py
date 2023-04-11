@@ -166,7 +166,7 @@ def check_for_game_over():
     if player_lives == 0:
         game_over = True
         draw_hangman()
-        print(text_colors.BOLD + text_colors.WRONG + 'You lost! The movie was ' + randomly_chosen_word.upper() + ". Try to play again!\n" + text_colors.END)
+        print(text_colors.BOLD + text_colors.WRONG + 'You lost! The movie was ' + randomly_chosen_word.upper() + ".\n Try to play again!\n" + text_colors.END)
         print(text_colors.WRONG + """
             __   __                _                        _ 
             \ \ / /               | |                      | |
@@ -181,7 +181,7 @@ def check_for_game_over():
     if len(correctly_guessed_letters) == len(set(randomly_chosen_word.replace(' ', ''))):
         game_over = True
         print(text_colors.BOLD + text_colors.GREEN + 'Congratulations! You guessed the movie name ' + randomly_chosen_word.upper() 
-        + '! Try to guess another movie!\n' + text_colors.END)
+        + '!\n Try to guess another movie!\n' + text_colors.END)
         print( text_colors.GREEN + """
             __   __                _    _  _         _ 
             \ \ / /               | |  | |(_)       | |
