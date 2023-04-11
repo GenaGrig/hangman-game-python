@@ -149,9 +149,10 @@ def guess_letter():
         print(text_colors.GREEN + 'Correct! ' + text_colors.BOLD + letter.upper() + text_colors.END + text_colors.GREEN + ' is in the movie!\n' + text_colors.END)
     else:
         incorrectly_guessed_letters.append(letter)
+        incorrectly_guessed_letters.sort()   # Sorts the list of incorrectly guessed letters alphabetically
         print(text_colors.WRONG + 'Wrong! ' + text_colors.BOLD + letter.upper() + text_colors.END + text_colors.WRONG + ' is not in the movie!\n' + text_colors.END)
         print(text_colors.WRONG + "You lost a life!\n" + text_colors.END)
-        print(text_colors.WARNING + "You have " + str(player_lives) + " lives left!\n" + text_colors.END)
+        print(text_colors.WARNING + "You have " + text_colors.BOLD + str(player_lives - 1) + text_colors.END + text_colors.WARNING + " lives left!\n" + text_colors.END)
         player_lives -= 1
 
 def check_for_game_over():
