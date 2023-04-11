@@ -213,6 +213,7 @@ def restart_game():
         restart = input(text_colors.WARNING + 'Do you want to play again or go in menu? (yes/no/menu): '.rjust(10//2) + text_colors.END)
         print('\n')
         if restart.lower() == 'yes' or restart.lower() == 'y':
+            clear_screen()
             print('Good luck! Try to guess movie name in 6 attempts!\n')
             choose_random_word()
             break
@@ -220,6 +221,7 @@ def restart_game():
             print(text_colors.GREEN + 'Thanks for playing! See you next time!' + text_colors.END)
             exit()
         elif restart.lower() == 'menu' or restart.lower() == 'm':
+            clear_screen()
             execfile(filename='run.py')
         else:
             print(text_colors.WRONG + 'Please enter y or n!' + text_colors.END)
@@ -233,6 +235,12 @@ def execfile(filename, globals=None, locals=None):
     })
     with open(filename, 'rb') as file:
         exec(compile(file.read(), filename, 'exec'), globals, locals)
+
+def clear_screen():
+    '''
+    Clears the screen
+    '''
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 # Draws the hangman based on the lives left
 
