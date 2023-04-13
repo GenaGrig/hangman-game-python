@@ -15,26 +15,39 @@ How it will work:
 7. If all lives are over, a loose message will display
 '''
 
-# Global variable for correctly guessed letters
+
+'''
+Global variable for correctly guessed letters
+'''
 correctly_guessed_letters = []
 
-# Gloval variable for incorrectly guessed letters
+'''
+Global variable for incorrectly guessed letters
+'''
 incorrectly_guessed_letters = []
 
-# Global variable for randomly chosen word
+'''
+Global variable for randomly chosen word
+'''
 randomly_chosen_word = ''
 
-# Global variable for lives left
+'''
+Global variable for lives left
+'''
 player_lives = 6
 
-# Global variable for game over
+'''
+Global variable for game over
+'''
 game_over = False
 
-# Determine width of terminal
+'''
+Determine width of terminal
+'''
 width = os.get_terminal_size().columns
 
 
-class text_colors:  # Class for text colors
+class text_colors:
     '''
     Class for text colors
     '''
@@ -46,9 +59,6 @@ class text_colors:  # Class for text colors
     WRONG = '\033[91m'  # red
     END = '\033[0m'  # white
     BOLD = '\033[1m'  # bold
-    UNDERLINE = '\033[4m'  # underline
-
-# Chooses random word from the list of words
 
 
 def choose_random_word():
@@ -67,8 +77,6 @@ def choose_random_word():
 
     random.seed(time.time())
     randomly_chosen_word = random.choice(acceptable_words)
-
-# Draws the word with dashes instead of those letters that haven't been guessed yet
 
 
 def draw_word():
@@ -139,7 +147,7 @@ def guess_letter():
         player_lives -= 1
 
 
-def check_for_game_over():  # Checks if player won or lost
+def check_for_game_over():
     '''
     Checks if player won or lost
     '''
@@ -183,7 +191,7 @@ def check_for_game_over():  # Checks if player won or lost
             restart_game()
 
 
-def restart_game():  # Restarts the game or returns to menu
+def restart_game():
     '''
     Restarts the game
     '''
@@ -219,7 +227,10 @@ def restart_game():  # Restarts the game or returns to menu
             print(text_colors.WRONG + 'Please enter y, n or m!' + text_colors.END)
 
 
-# Runs the file with the given name in the global and local namespace dictionaries provided as globals and locals.
+    '''
+    This function is used to run the code in a file as if it were in the main module.
+    It is used to run the code in the run.py file. 
+    '''
 def execfile(filename, globals=None, locals=None):
     if globals is None:
         globals = {}
@@ -231,14 +242,14 @@ def execfile(filename, globals=None, locals=None):
         exec(compile(file.read(), filename, 'exec'), globals, locals)
 
 
-def clear_screen():  # Clears the screen
+def clear_screen():
     '''
     Clears the screen
     '''
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-def main():  # Main function of the game
+def main():
     '''
     Main functions of application and entry point of the game
     '''
@@ -264,8 +275,6 @@ def main():  # Main function of the game
 
         guess_letter()
         check_for_game_over()
-
-# Draws the hangman based on the lives left
 
 
 def draw_hangman():
@@ -338,10 +347,12 @@ def draw_hangman():
         print("|")
         print("+-------+\n")
 
-# Entry point of the game and main function of the application which will be executed first when the game is started by the user
-# and will call the main function of the game to start the game and play it.
 
-
+'''
+Entry point of the game and main function of the application which will be executed first 
+when the game is started by the user and will call the main function of the game to start 
+the game and play it.
+'''
 if __name__ == '__main__':
     while True:
         print("\n")

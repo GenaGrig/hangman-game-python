@@ -3,34 +3,33 @@ import time
 import os
 
 '''
-HANGMAN GAME
-
-How it will work:
-1. A random word will be chosen from our list of words.
-2. The player will have 6 lives to guess the all letters, otherwise player looses.
-3. The player can guess only one letter at a time.
-4. Before every guess player can see previous guesses.
-5. Before every guess our hangman drawing will be displayed based on the number of lives left.
-6. If all letters are guessed right before all lives are over, a win message will display.
-7. If all lives are over, a loose message will display
+Global variable for correctly guessed letters
 '''
-
-# Global variable for correctly guessed letters
 correctly_guessed_letters = []
 
-# Gloval variable for incorrectly guessed letters
+'''
+Global variable for incorrectly guessed letters
+'''
 incorrectly_guessed_letters = []
 
-# Global variable for randomly chosen word
+'''
+Global variable for randomly chosen word
+'''
 randomly_chosen_word = []
 
-# Global variable for lives left
+'''
+Global variable for lives left
+'''
 player_lives = 6
 
-# Global variable for game over
+'''
+Global variable for game over
+'''
 game_over = False
 
-# Determine width of terminal
+'''
+Determine width of terminal
+'''
 width = os.get_terminal_size().columns
 
 
@@ -46,9 +45,6 @@ class text_colors:
     WRONG = '\033[91m'  # red
     END = '\033[0m'  # white
     BOLD = '\033[1m'  # bold
-    UNDERLINE = '\033[4m'  # underline
-
-# Chooses random word from the list of words
 
 
 def choose_random_word():
@@ -65,8 +61,6 @@ def choose_random_word():
     random.seed(time.time())
     randomly_chosen_word = random.choice(acceptable_words)
 
-# Draws the word with dashes instead of those letters that haven't been guessed yet
-
 
 def draw_word():
     '''
@@ -75,46 +69,15 @@ def draw_word():
     global correctly_guessed_letters
     global randomly_chosen_word
 
-    # This is a list comprehension
-    # It will iterate through the randomly_chosen_word and check if the letter is in the correctly_guessed_letters
-    # If it is, it will print the letter, if not, it will print a dash
-    # It will also print a space if there is a space in the word
     print(' '.join([letter if letter in correctly_guessed_letters else '_' if letter !=
           ' ' else ' ' for letter in randomly_chosen_word]))
     print('\n')
-
-    # This is the same as the list comprehension above, but it is written in a more traditional way
-    # It will iterate through the randomly_chosen_word and check if the letter is in the correctly_guessed_letters
-    # If it is, it will print the letter, if not, it will print a dash
-    # It will also print a space if there is a space in the word
-    # for letter in randomly_chosen_word:
-    #     if letter in correctly_guessed_letters:
-    #         print(letter, end=' ')
-    #     elif letter == ' ':   # If there is a space in the word, print a space
-    #         print(' ', end=' ')
-    #     else:               # If the letter hasn't been guessed yet, print a dash
-    #         print('_', end=' ')
-    # print('')
-
-    # This is the same as the list comprehension above, but it is written in a more traditional way
-    # It will iterate through the randomly_chosen_word and check if the letter is in the correctly_guessed_letters
-    # If it is, it will print the letter, if not, it will print a dash
-    # It will also print a space if there is a space in the word
-
-    # for i in range(0, len(randomly_chosen_word)):
-    #     letter = randomly_chosen_word[i]
-    #     if letter in correctly_guessed_letters:
-    #         print(letter, end=' ')
-    #     elif letter == ' ':   # If there is a space in the word, print a space
-    #         print(' ', end=' ')
-    #     else:               # If the letter hasn't been guessed yet, print a dash
-    #         print('_', end=' ')
-    # print('')
 
 
 def get_one_valid_letter():
     '''
     Validation for player input - entering only one letter at a time and no repeats
+    or other symbols than letters (a-z) are allowed 
     '''
     is_letter_valid = False
     letter = ' '
@@ -240,7 +203,10 @@ def restart_game():
         else:
             print(text_colors.WRONG + 'Please enter y or n!' + text_colors.END)
 
-
+    '''
+    This function is used to run the code in a file as if it were in the main module.
+    It is used to run the code in the run.py file. 
+    '''
 def execfile(filename, globals=None, locals=None):
     if globals is None:
         globals = {}
@@ -257,8 +223,6 @@ def clear_screen():
     Clears the screen
     '''
     os.system('cls' if os.name == 'nt' else 'clear')
-
-# Draws the hangman based on the lives left
 
 
 def draw_hangman():
