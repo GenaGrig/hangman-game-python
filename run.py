@@ -228,7 +228,7 @@ def main():  # Main function of the game
     print("------ Welcome to Hangman Sports Quiz ------\n".center(width))
     name = input('Enter your name: '.rjust(90//2))
     print('\n')
-    print('Welcome' + text_colors.BLUE + ' ' + name + text_colors.END + '! Try to guess sports name in 6 attempts!\n')
+    print('Welcome' + text_colors.CYAN + ' ' + name + text_colors.END + '! Try to guess sports name in 6 attempts!\n')
     choose_random_word()
 
     while game_over is False:
@@ -357,3 +357,4 @@ if __name__ == '__main__':
             exit()
         else:
             print(text_colors.WRONG + f'Not a correct choice: {choice}' + text_colors.END)
+            clear_screen()
