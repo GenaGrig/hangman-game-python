@@ -1,7 +1,6 @@
 import random
 import time
 import os
-import re
 
 '''
 HANGMAN GAME
@@ -34,21 +33,23 @@ game_over = False
 # Determine width of terminal
 width = os.get_terminal_size().columns
 
+
 class text_colors:
     '''
     Class for text colors
     '''
-    HEADER = '\033[95m' # purple
-    CYAN = '\033[96m' # cyan
-    BLUE = '\033[94m' # blue
-    GREEN = '\033[92m' # green
-    WARNING = '\033[93m' # yellow
-    WRONG = '\033[91m' # red
-    END = '\033[0m' # white
-    BOLD = '\033[1m' # bold
-    UNDERLINE = '\033[4m' # underline
+    HEADER = '\033[95m'  # purple
+    CYAN = '\033[96m'  # cyan
+    BLUE = '\033[94m'  # blue
+    GREEN = '\033[92m'  # green
+    WARNING = '\033[93m'  # yellow
+    WRONG = '\033[91m'  # red
+    END = '\033[0m'  # white
+    BOLD = '\033[1m'  # bold
+    UNDERLINE = '\033[4m'  # underline
 
 # Chooses random word from the list of words
+
 
 def choose_random_word():
     '''
@@ -66,6 +67,7 @@ def choose_random_word():
 
 # Draws the word with dashes instead of those letters that haven't been guessed yet
 
+
 def draw_word():
     '''
     Will print the word with dashes instead of those letters that haven't been guessed yet
@@ -77,7 +79,8 @@ def draw_word():
     # It will iterate through the randomly_chosen_word and check if the letter is in the correctly_guessed_letters
     # If it is, it will print the letter, if not, it will print a dash
     # It will also print a space if there is a space in the word
-    print(' '.join([letter if letter in correctly_guessed_letters else '_' if letter != ' ' else ' ' for letter in randomly_chosen_word]))
+    print(' '.join([letter if letter in correctly_guessed_letters else '_' if letter !=
+          ' ' else ' ' for letter in randomly_chosen_word]))
 
     # This is the same as the list comprehension above, but it is written in a more traditional way
     # It will iterate through the randomly_chosen_word and check if the letter is in the correctly_guessed_letters
@@ -108,7 +111,6 @@ def draw_word():
     # print('')
 
 
-    
 def get_one_valid_letter():
     '''
     Validation for player input - entering only one letter at a time and no repeats
@@ -119,18 +121,21 @@ def get_one_valid_letter():
         letter = input('Enter guess letter: '.rjust(10//2))
         letter = letter.strip().lower()
         print('\n')
-        if len(letter) <=0 or len(letter) >1:
-            print(text_colors.WRONG + "You can type in only 1 letter at a time!\n" + text_colors.END)
+        if len(letter) <= 0 or len(letter) > 1:
+            print(text_colors.WRONG +
+                  "You can type in only 1 letter at a time!\n" + text_colors.END)
         elif letter.isalpha():
             if letter in correctly_guessed_letters or letter in incorrectly_guessed_letters:
-                print(text_colors.WRONG + "You already guessed letter" + ' ' + text_colors.BOLD + letter.upper() 
-                + text_colors.END + text_colors.WRONG + ", try another one!\n" + text_colors.END)
+                print(text_colors.WRONG + "You already guessed letter" + ' ' + text_colors.BOLD + letter.upper()
+                      + text_colors.END + text_colors.WRONG + ", try another one!\n" + text_colors.END)
             else:
                 is_letter_valid = True
         else:
-            print(text_colors.WRONG + "You must enter a letter (a-z)!\n" + text_colors.END)
+            print(text_colors.WRONG +
+                  "You must enter a letter (a-z)!\n" + text_colors.END)
 
     return letter
+
 
 def guess_letter():
     '''
@@ -146,14 +151,19 @@ def guess_letter():
 
     if letter in randomly_chosen_word:
         correctly_guessed_letters.append(letter)
-        print(text_colors.GREEN + 'Correct! ' + text_colors.BOLD + letter.upper() + text_colors.END + text_colors.GREEN + ' is in the movie!\n' + text_colors.END)
+        print(text_colors.GREEN + 'Correct! ' + text_colors.BOLD + letter.upper() +
+              text_colors.END + text_colors.GREEN + ' is in the movie!\n' + text_colors.END)
     else:
         incorrectly_guessed_letters.append(letter)
-        incorrectly_guessed_letters.sort()   # Sorts the list of incorrectly guessed letters alphabetically
-        print(text_colors.WRONG + 'Wrong! ' + text_colors.BOLD + letter.upper() + text_colors.END + text_colors.WRONG + ' is not in the movie!\n' + text_colors.END)
+        # Sorts the list of incorrectly guessed letters alphabetically
+        incorrectly_guessed_letters.sort()
+        print(text_colors.WRONG + 'Wrong! ' + text_colors.BOLD + letter.upper() +
+              text_colors.END + text_colors.WRONG + ' is not in the movie!\n' + text_colors.END)
         print(text_colors.WRONG + "You lost a life!\n" + text_colors.END)
-        print(text_colors.WARNING + "You have " + text_colors.BOLD + str(player_lives - 1) + text_colors.END + text_colors.WARNING + " lives left!\n" + text_colors.END)
+        print(text_colors.WARNING + "You have " + text_colors.BOLD + str(player_lives - 1) +
+              text_colors.END + text_colors.WARNING + " lives left!\n" + text_colors.END)
         player_lives -= 1
+
 
 def check_for_game_over():
     '''
@@ -167,7 +177,8 @@ def check_for_game_over():
     if player_lives == 0:
         game_over = True
         draw_hangman()
-        print(text_colors.BOLD + text_colors.WRONG + 'You lost! The movie was ' + randomly_chosen_word.upper() + ".\n Try to play again!\n" + text_colors.END)
+        print(text_colors.BOLD + text_colors.WRONG + 'You lost! The movie was ' +
+              randomly_chosen_word.upper() + ".\n Try to play again!\n" + text_colors.END)
         print(text_colors.WRONG + """
             __   __                _                        _ 
             \ \ / /               | |                      | |
@@ -178,12 +189,11 @@ def check_for_game_over():
         """ + text_colors.END)
         restart_game()
 
-
     if len(correctly_guessed_letters) == len(set(randomly_chosen_word.replace(' ', ''))):
         game_over = True
-        print(text_colors.BOLD + text_colors.GREEN + 'Congratulations! You guessed the movie name ' + randomly_chosen_word.upper() 
-        + '!\n Try to guess another movie!\n' + text_colors.END)
-        print( text_colors.GREEN + """
+        print(text_colors.BOLD + text_colors.GREEN + 'Congratulations! You guessed the movie name ' + randomly_chosen_word.upper()
+              + '!\n Try to guess another movie!\n' + text_colors.END)
+        print(text_colors.GREEN + """
             __   __                _    _  _         _ 
             \ \ / /               | |  | |(_)       | |
              \ V /   ___   _   _  | |  | | _  _ __  | |
@@ -192,6 +202,7 @@ def check_for_game_over():
               \_/   \___/  \__,_|  \/  \/ |_||_| |_|(_)
             """ + text_colors.END)
         restart_game()
+
 
 def restart_game():
     '''
@@ -210,7 +221,8 @@ def restart_game():
     randomly_chosen_word = ''
 
     while True:
-        restart = input(text_colors.WARNING + 'Do you want to play again or go in menu? (yes/no/menu): '.rjust(10//2) + text_colors.END)
+        restart = input(text_colors.WARNING +
+                        'Do you want to play again or go in menu? (yes/no/menu): '.rjust(10//2) + text_colors.END)
         print('\n')
         if restart.lower() == 'yes' or restart.lower() == 'y':
             clear_screen()
@@ -218,13 +230,15 @@ def restart_game():
             choose_random_word()
             break
         elif restart.lower() == 'no' or restart.lower() == 'n':
-            print(text_colors.GREEN + 'Thanks for playing! See you next time!' + text_colors.END)
+            print(text_colors.GREEN +
+                  'Thanks for playing! See you next time!' + text_colors.END)
             exit()
         elif restart.lower() == 'menu' or restart.lower() == 'm':
             clear_screen()
             execfile(filename='run.py')
         else:
             print(text_colors.WRONG + 'Please enter y or n!' + text_colors.END)
+
 
 def execfile(filename, globals=None, locals=None):
     if globals is None:
@@ -236,6 +250,7 @@ def execfile(filename, globals=None, locals=None):
     with open(filename, 'rb') as file:
         exec(compile(file.read(), filename, 'exec'), globals, locals)
 
+
 def clear_screen():
     '''
     Clears the screen
@@ -243,6 +258,7 @@ def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 # Draws the hangman based on the lives left
+
 
 def draw_hangman():
     '''
@@ -314,6 +330,7 @@ def draw_hangman():
         print("|")
         print("+-------+\n")
 
+
 def main():
     '''
     Main functions of application and entry point of the game
@@ -324,7 +341,8 @@ def main():
     print("------ Welcome to Hangman Movie Quiz ------\n".center(width))
     name = input('Enter your name: '.rjust(90//2))
     print('\n')
-    print('Welcome' + text_colors.BLUE + ' ' + name + text_colors.END + '! Try to guess movie name in 6 attempts!\n')
+    print('Welcome' + text_colors.BLUE + ' ' + name +
+          text_colors.END + '! Try to guess movie name in 6 attempts!\n')
     choose_random_word()
 
     while game_over is False:
@@ -338,6 +356,7 @@ def main():
 
         guess_letter()
         check_for_game_over()
+
 
 if __name__ == '__main__':
     main()
