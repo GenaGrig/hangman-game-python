@@ -81,6 +81,7 @@ def draw_word():
     # It will also print a space if there is a space in the word
     print(' '.join([letter if letter in correctly_guessed_letters else '_' if letter !=
           ' ' else ' ' for letter in randomly_chosen_word]))
+    print('\n')
 
     # This is the same as the list comprehension above, but it is written in a more traditional way
     # It will iterate through the randomly_chosen_word and check if the letter is in the correctly_guessed_letters
@@ -337,11 +338,12 @@ def main():
     '''
     global game_over
 
+    clear_screen()
     print('\n')
     print("------ Welcome to Hangman Country Quiz ------\n".center(width))
     name = input('Enter your name: '.rjust(90//2))
     print('\n')
-    print('Welcome' + text_colors.BLUE + ' ' + name + text_colors.END +
+    print('Welcome' + text_colors.WARNING + ' ' + name + text_colors.END +
           '! Try to guess country name in 6 attempts!\n')
     choose_random_word()
 

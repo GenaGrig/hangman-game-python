@@ -85,6 +85,7 @@ def draw_word():
         else:
             print('_', end=' ')
     print('')
+    print('\n')
 
 
 def get_one_valid_letter():
@@ -243,11 +244,12 @@ def main():  # Main function of the game
     '''
     global game_over
 
+    clear_screen()
     print('\n')
     print("------ Welcome to Hangman Sports Quiz ------\n".center(width))
     name = input('Enter your name: '.rjust(90//2))
     print('\n')
-    print('Welcome' + text_colors.CYAN + ' ' + name + text_colors.END +
+    print('Welcome' + text_colors.WARNING + ' ' + name + text_colors.END +
           '! Try to guess sports name in 6 attempts!\n')
     choose_random_word()
 
@@ -382,4 +384,3 @@ if __name__ == '__main__':
         else:
             print(text_colors.WRONG +
                   f'Not a correct choice: {choice}' + text_colors.END)
-            clear_screen()
