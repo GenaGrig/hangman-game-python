@@ -250,8 +250,29 @@ If player types in "no or n"
 | Game overall | Thank you message when quitting the game | N/A | Shows correctly
 | Game overall | Program is terminated after quit | Q & Enter, no or n & Enter | Works correctly
 
+# Bugs 
 
+* Input bug on different mobile devices and tablets
+    * When trying to type in letter, device adds numbers or previous letters (tested on Samsung Galaxy 9 and Lenovo tablet). 
+    * Testing on Nokia 7+ was successful and no bugs were detected.
 
+# Validation
+
+### Lighthouse desktop
+
+* SEO is 89 because no meta information is in code
+
+![Lighthouse desktop performance](/pic/lighthouse.PNG)
+
+### Lighthouse mobile
+
+![Lighthouse mobile performance](/pic/lighthouse_mobile.PNG)
+
+## CI Python Linter
+
+* Two types of warning
+    * Line is too long (that does not affect the functionality of the code or visual details on game)
+    * Invalid escape sequence (this is used for creating the graphics and it has a lot of whitespaces)
 
 
 
