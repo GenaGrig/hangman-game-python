@@ -174,6 +174,86 @@ If player types in "no or n"
 
 ![Choice 'quit' from main menu](/pic/quit_the_game2.PNG)
 
+# Future features
+
+* High scores or leaderboard. This feature can show high scores of the players, counting correctly or incorrectly guessed words and applying scoring to them based on the scale in the end of the game, when player will quit.
+
+* Difficulty settings. Possible feature, because features implemented right now do not allow to choose difficulty or make a categories that can be base for it. Amount of 6 attempts is challenging, but research showed that chance to win or lose is 50% despite of length of the word. 
+
+* Option to enter the whole word instead of guessing by one letter at a time. In this case, validation method should be changed, because now it does not allow to enter more than one letter at once.
+
+# Technologies used
+
+## Languages
+
+* Python
+
+## Other programs and websites
+
+* [Lucidchart](https://www.lucidchart.com/pages/) for creating flowchart and diagrams
+* [Heroku](www.heroku.com) for deploying the game online
+* [GitHub](www.github.com) for storing project repository
+* [Visual Studio Code](https://code.visualstudio.com/) for coding the game and pushing it to GitHub
+
+* Python modules
+    * random - to choose random word from the list
+    * time - to make random words not to be chosen again in a certain limit of time to avoid repeats of guessed words
+    * os - module to work with operating systems
+
+# Testing
+
+| Feature | Description | Action | Result |
+| -------|--------|--------|--------|
+| Welcome screen | Graphics display | N/A | Shows correctly |
+| Main menu | Choices of topics, game rules and quit | N/A | Shows correctly
+| Player choice input | Input string and cursor active | Type in | Types numbers and letters
+| Option 1 | Hangman sports | 1 & Enter | Works correctly |
+| Option 2 | Hangman Movies | 2 & Enter | Works correctly |
+| Option 3 | Hangman Countries | 3 & Enter | Works correctly |
+| Option 4 | Game rules | R & Enter | Works correctly |
+| Option 5 | Quit | Q & Enter | Works correctly |
+| Name input | after choice 1,2,3 & Enter | 1,2 or 3 & Enter| Works correctly
+| Game screen 1 | Welcome message with name| N/A | Shows correctly 
+| Game screen 1 | Gallows drawn | N/A | Shows correctly
+| Game screen 1 | Word shown as underscores | N/A | Shows correctly
+| Game screen 1 | Player input for a letter | letter + Enter | Works correctly
+| Input validation | Repetitions, multiple inputs, not a letter | N/A | Works correctly
+| Game screen 2 | Correct guess message | N/A | Shows correctly
+| Game screen 2 | Underscores substitutes by correctly guessed letters | N/A | Shows correctly
+| Game screen 2 | Incorrect guess message | N/A | Shows correctly
+| Game screen 2 | Lost a life message | N/A | Shows correctly
+| Game screen 2 | Lives left message | N/A | Shows correctly
+| Game screen 2 | Gallows with hangman | N/A | Shows correctly
+| Game screen 2 | Incorrect guesses list | N/A | Shows correctly
+| Game screen 2 | Validation messages on incorrect inputs | N/A | Shows correctly
+| Game screen 3 | Updated lives left message | N/A | Shows correctly
+| Game screen 3 | Gallows with hangman new body part (incorrect guess) | N/A | Shows correctly
+| Game Win screen| Congratulations message | N/A | Shows correctly
+| Game Win screen | Sports (or other topics) name | N/A | Shows correctly
+| Game Win screen | You Win graphics | N/A | Shows correctly
+| Game Win Screen | Play again question and options | yes/no/menu or y/n/m $ Enter | Shows correctly
+| Game Win Screen | Restart the game | yes or y & Enter | Works correctly
+| Game Win Screen | Quit the game | no or n & Enter | Works correctly
+| Game Win Screen | Return to menu | menu or m & Enter | Works correctly
+| Clear screen | Clears the screen from previous game after restart or return to menu | N/A | Works correctly
+| Game Lost screen| Zero lives message | N/A | Shows correctly
+| Game Lost screen| Gallows with full body of hangman | N/A | Shows correctly
+| Game Lost screen| You lost message | N/A | Shows correctly
+| Game Lost screen | Correct sports (or other topics) name | N/A | Shows correctly
+| Game Lost screen | You Lose graphics | N/A | Shows correctly
+| Game Lost Screen | Play again question and options | yes/no/menu or y/n/m $ Enter | Shows correctly
+| Game Lost Screen | Restart the game | yes or y & Enter | Works correctly
+| Game Lost Screen | Quit the game | no or n & Enter | Works correctly
+| Game Lost Screen | Return to menu | menu or m & Enter | Works correctly
+| Clear screen | Clears the screen from previous game after restart or return to menu | N/A | Works correctly
+| Game overall | Colors in game - cyan, red, yellow, green | N/A | Shows correctly
+| Game overall | Thank you message when quitting the game | N/A | Shows correctly
+| Game overall | Program is terminated after quit | Q & Enter, no or n & Enter | Works correctly
+
+
+
+
+
 
 
 
