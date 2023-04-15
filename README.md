@@ -270,9 +270,19 @@ If player types in "no or n"
 
 ## CI Python Linter
 
-* Two types of warning
-    * Line is too long (that does not affect the functionality of the code or visual details on game)
+* Known warning
     * Invalid escape sequence (this is used for creating the graphics and it has a lot of whitespaces)
+
+![Python validation results](/pic/python_validation.PNG)
+
+# Testing user stories
+
+* As a first time visitor, I want to see a name and understandable navigation of the game
+* As a first time visitor, I want to be able to read the rules of the game
+* As a first time visitor, I want to select difficulty or interesting topic of the game
+* As a first time visitor, I want to get feedback on my actions in the game
+* As a first time visitor, I do not want to meet bugs, that will disturb my game experience
+* As a first time visitor, I want to meet a challenge in playing the game
 
 
 
