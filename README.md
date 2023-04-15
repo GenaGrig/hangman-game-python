@@ -76,11 +76,106 @@ This adds some attractiveness and will show in next window personalised welcome 
 
 ![Enter player name string](/pic/enter_name.PNG)
 
-3. Start of the game. First screen.
+### 3. Start of the game. First screen.
+
 * Personalized welcome message with player name.
 * Hangman drawing
 * Word is shown with underscores (_ _ _ _ _) instead of letters.
 * Implemented several word guesses with spaces between them
 * "Enter guess letter:" player input string
 
-First game screen, after input player name, shows a personalized player welcome message with player name colored in yellow. Then the hangman itself draws, we see only the default structure with a small piece of a rope. 
+First game screen, after input player name, shows a personalized player welcome message with player name colored in yellow. Then the gallows itself draws. We see only the default structure with a small piece of a rope. Below that word is shown with underscores instead of letters. In this example there is a space between the underscores, which means that there are two words to guess. There can be three or four words to guess and all of them are divided with space. 
+
+![First game move](/pic/first_game_move.PNG)
+
+### 4. The Game
+
+* Correct guess
+    * Correctly guessed letter is shown in the word instead of uderscore on a correct place
+    * Green colored message with correctly guessed letter is shown to player
+
+When the guess is correct, green string is showing it, saying "Correct! Letter (correct guessed letter) is in the word (name of the topic).
+
+![Correct guess of the letter](/pic/correct_guess.PNG)
+
+* Incorrect guess
+    * Incorrect letter shows in red colored message
+    * Lose a life message is shown in red color
+    * How many lives left shows in yellow color (default lives amount is 6)
+    * Gallows is drawn and a hangmans head is drawn as a first part of a body
+    * Incorrect guesses list shows upp with incorrect letters in it
+    * Spaces are added between lines to make readability easier
+
+![Incorrect guess of the letter](/pic/incorrect_guess.PNG)
+
+### 5. Player input validation
+
+* There are three levels of player input validation
+    * Repeated guesses
+    * More than 1 letter inputs
+    * Other than letters symbols and numbers
+
+This is important part of the game as it can disturb the player experience if this wrong inputs will not be fixed. 
+Already guessed letters are validating and as a result player will see a red colored message which will say that this letter player already guessed, which means that letter is in correctly or incorrectly guessed letters list (in first case it will be shown in the word itself). 
+Multiple inputs is also validating and if player will input more than 1 letter, a red colored message will show up saying that player can type in only one letter at a time.
+The last validation is called letter.isalpha or by simple words it must be a letter, not a symbol or number. In case user will type in number or any other symbol like *%&#, a red colored message will show up saying that player must enter a letter from a to z (it does not matter upper or lowercase).
+
+![Player input validations](/pic/input_validations.PNG)
+
+### 6. Winning the game
+
+* Player will see the last correct guessed letter in the word in green color
+* Congratulations message with the full correct guessed word in green color
+* You win! graphics in green color
+* Question if player wants to play again or go in menu (third alternative is quit if none of previuos choices will be made) in yellow color
+* Player can type in full words "yes/no/menu" or only first letters "y/n/m"
+
+The last screen if player wins the game shows congratulations message with the gueesed word or words, big graphics You Win! and a question about wish to play again or return to main menu. If player will type in "no or n" game will be terminated. 
+The green color is added to congratulations message and graphics to make it more attractive. The yellow color is added for play again question as a waiting of user choice. 
+
+![You win final screen](/pic/you_win_screen.PNG)
+
+### 7. Loosing the game
+
+* Player will see a message with zero lives left in yellow color
+* Player will see a gallows with hangman
+* Red colored message saying that player lost the game and the correct word or words will show up in red color.
+* You Lose! graphics in red color will show up
+* Question if player wants to play again or go in menu (third alternative is quit if none of previuos choices will be made) in yellow color
+* Player can type in full words "yes/no/menu" or only first letters "y/n/m"
+
+As in the winning screen on the loosing screen will be displayed same information with some differences in color - from green it is red now. But the correct word(s) is displayed as well as the question of playing again.
+
+![You lost final screen](/pic/you_lost_screen.PNG)
+
+### 8. Game restart
+
+If player types in "yes or y" to restart:
+
+* Good luck message!
+* Gallows default structure
+* Word with underscores
+* "Enter guess letter:" player input
+* Clear screen function is used to clear the interpreter screen from previous game
+
+![Restarted game screen](/pic/restarted_game.PNG)
+
+If player types in "menu or m" to enter menu
+
+* Player goes back to welcome screen with main menu
+* Clear screen function works and clears the interpreter from previous game showing welcome screen and main menu
+
+If player types in "no or n"
+
+* Player sees a message in green color saying "Thanks for playing! See you next time!"
+* If Quit option was chosen from main menu "Thank you for playing!" will show up in yellow color.
+
+![Choice 'no' from restart the game question](/pic/quit_the_game1.PNG)
+
+![Choice 'quit' from main menu](/pic/quit_the_game2.PNG)
+
+
+
+
+
+
