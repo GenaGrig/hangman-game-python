@@ -23,7 +23,7 @@ Game is written on Python and deployed to Heroku, where everyone can play it.
         * No repeats of already guessed correct or incorrect letters
         * No inputs of more than 1 letter at once
         * No inputs of other symbols or numbers, only letters a-z 
-4. If player guesses all letters in less than 6 attempts - player wins, otherwise player looses.
+4. If player guesses all letters in less than 6 attempts - player wins, otherwise player loses.
 5. Player chooses to restart the game in the same topic, go to main menu or quit the game.
 
 # User experience
@@ -36,7 +36,7 @@ Game is written on Python and deployed to Heroku, where everyone can play it.
 * As a first time visitor, I want to be able to read the rules of the game
 * As a first time visitor, I want to select difficulty or interesting topic of the game
 * As a first time visitor, I want to get feedback on my actions in the game
-* As a first time visitor, I do not want to meet bugs, that will disturb my game experience
+* As a first time visitor, I do not want to meet bugs that will disturb my game experience
 * As a first time visitor, I want to meet a challenge in playing the game
 
 # Planning Flowchart
@@ -47,7 +47,7 @@ Before the game coding, I made a structure of the game in a flowchart, to unders
 * What validations needed to prevent repetitions or wrong inputs from player when guessing the letters?
 * What are results in guessing letter wright or wrong?
 * What are results in guessing all letters wright or wrong in limited amount of attempts?
-* What next after winning or loosing the game?
+* What next after winning or losing the game?
 
 ![Flowchart of the Hangman game](/pic/Flowchart_Hangman.png)
 
@@ -72,7 +72,7 @@ Both Hangman graphics and menu is centered, to make the game welcome screen more
 * Welcome message with name of the topic chosen by player
 * "Enter your name:" player input string
 
-This adds some attractiveness and will show in next window personalised welcome message to player. Both welcome message and player input string are centered for better look.
+This adds some attractiveness and will show in next window personalized welcome message to player. Both welcome message and player input string are centered for better look.
 
 ![Enter player name string](/pic/enter_name.PNG)
 
@@ -91,7 +91,7 @@ First game screen, after input player name, shows a personalized player welcome 
 ### 4. The Game
 
 * Correct guess
-    * Correctly guessed letter is shown in the word instead of uderscore on a correct place
+    * Correctly guessed letter is shown in the word instead of underscore on a correct place
     * Green colored message with correctly guessed letter is shown to player
 
 When the guess is correct, green string is showing it, saying "Correct! Letter (correct guessed letter) is in the word (name of the topic).
@@ -102,8 +102,8 @@ When the guess is correct, green string is showing it, saying "Correct! Letter (
     * Incorrect letter shows in red colored message
     * Lose a life message is shown in red color
     * How many lives left shows in yellow color (default lives amount is 6)
-    * Gallows is drawn and a hangmans head is drawn as a first part of a body
-    * Incorrect guesses list shows upp with incorrect letters in it
+    * Gallows is drawn and a hangman's head is drawn as a first part of a body
+    * Incorrect guesses list shows up with incorrect letters in it
     * Spaces are added between lines to make readability easier
 
 ![Incorrect guess of the letter](/pic/incorrect_guess.PNG)
@@ -127,24 +127,24 @@ The last validation is called letter.isalpha or by simple words it must be a let
 * Player will see the last correct guessed letter in the word in green color
 * Congratulations message with the full correct guessed word in green color
 * You win! graphics in green color
-* Question if player wants to play again or go in menu (third alternative is quit if none of previuos choices will be made) in yellow color
+* Question if player wants to play again or go in menu (third alternative is quit if none of previous choices will be made) in yellow color
 * Player can type in full words "yes/no/menu" or only first letters "y/n/m"
 
-The last screen if player wins the game shows congratulations message with the gueesed word or words, big graphics You Win! and a question about wish to play again or return to main menu. If player will type in "no or n" game will be terminated. 
+The last screen if player wins the game shows congratulations message with the guessed word or words, big graphics You Win! and a question about wish to play again or return to main menu. If player will type in "no or n" game will be terminated. 
 The green color is added to congratulations message and graphics to make it more attractive. The yellow color is added for play again question as a waiting of user choice. 
 
 ![You win final screen](/pic/you_win_screen.PNG)
 
-### 7. Loosing the game
+### 7. Losing the game
 
 * Player will see a message with zero lives left in yellow color
 * Player will see a gallows with hangman
 * Red colored message saying that player lost the game and the correct word or words will show up in red color.
 * You Lose! graphics in red color will show up
-* Question if player wants to play again or go in menu (third alternative is quit if none of previuos choices will be made) in yellow color
+* Question if player wants to play again or go in menu (third alternative is quit if none of previous choices will be made) in yellow color
 * Player can type in full words "yes/no/menu" or only first letters "y/n/m"
 
-As in the winning screen on the loosing screen will be displayed same information with some differences in color - from green it is red now. But the correct word(s) is displayed as well as the question of playing again.
+As in the winning screen on the losing screen will be displayed same information with some differences in color - from green it is red now. But the correct word(s) is displayed as well as the question of playing again.
 
 ![You lost final screen](/pic/you_lost_screen.PNG)
 
@@ -270,25 +270,29 @@ If player types in "no or n"
 
 ## CI Python Linter
 
-* Known warning
-    * Invalid escape sequence (this is used for creating the graphics and it has a lot of whitespaces)
+* No errors detected
+* Known warnings
+    * Invalid escape sequence (W605)
+    * Trailing whitespace (W291)
+    * Anomalous backlash in string (W1401)
+All this warnings are results of drawing graphics to show name of the game, you win and you lose messages.
 
 ![Python validation results](/pic/python_validation.PNG)
 
 # Testing user stories
 
 * As a first time visitor, I want to see a name and understandable navigation of the game
-    * Main menu and other activities, that needs player desicions and input are made in a clear and understandable way. All the navigation in the game is intuitive and easy to follow by typing in appropriate letters.
+    * Main menu and other activities that needs player decisions and input are made in a clear and understandable way. All the navigation in the game is intuitive and easy to follow by typing in appropriate letters.
 * As a first time visitor, I want to be able to read the rules of the game
-    * For those who play the game for the first time, there is a short game rules, accesseble from the main menu by pressing Q and Enter.
+    * For those who play the game for the first time, there is a short game rules, accessible from the main menu by pressing Q and Enter.
 * As a first time visitor, I want to select difficulty or interesting topic of the game
     * Right now the difficulty of the game is not implemented, instead of this, player can choose one of three topics or interested theme, from which random word will be chosen. There are both short and long words, in movies and countries two or more words to guess at once are presented. Player has only 6 attempts to guess the word, and this is fair challenge with even chances to win or lose.
 * As a first time visitor, I want to get feedback on my actions in the game
     * Each action in the game is supported by messages. If player makes wrong choice or input, player will be informed about it and given a chance to try again. Game will accept only correct input according to where player is, in menu, the game or restart the game choice. During the game player will see messages about correct or incorrect choice and win or lose statement in the end of the game, with a question about restart, quit or return to main menu.
-* As a first time visitor, I do not want to meet bugs, that will disturb my game experience
+* As a first time visitor, I do not want to meet bugs that will disturb my game experience
     * No bugs were detected during testing of the game. Everything works as it should.
 * As a first time visitor, I want to meet a challenge in playing the game
-    * The game makes a challenge by letting a player guess the word in only 6 attempts despite of the length. It can be a short word of 4-5 letter, long word or even more than one word to guess. Chance to win or lose is 50%. In future features can be implemented more understandanle difficulty scale, but rigth now it is set to medium level.
+    * The game makes a challenge by letting a player guess the word in only 6 attempts despite of the length. It can be a short word of 4-5 letter, long word or even more than one word to guess. Chance to win or lose is 50%. In future features can be implemented more understandable difficulty scale, but right now it is set to medium level.
 
 # Deployment
 
@@ -334,7 +338,7 @@ If player types in "no or n"
 * Text to ASCII Art Generator (TAAG)[Link](http://patorjk.com/software/taag/#p=display&h=0&f=Acrobatic&t=Type%20Something%20)
 * Python Formatter and Beautifier [Link](https://codebeautify.org/python-formatter-beautifier#)
 
-# Acknowledgements
+## Acknowledgements
 
 * I want to thank my mentor Maranatha Ilesanmi for very good feedback and very useful advices that made my project complete and interesting. Very good ideas from my mentor that was implemented and made project look more solid.
 * I want to thank members on our Slack community for giving feedback and showing their own projects that was inspiring in different ways.
