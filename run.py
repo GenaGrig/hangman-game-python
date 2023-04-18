@@ -6,16 +6,17 @@ import os
 HANGMAN GAME
 
 How it will work:
-1. A random word will be chosen from our list of words.
-2. The player will have 6 lives to guess the all letters,
+1. A random word will be chosen from list of words of selected topic.
+2. The player will have 6 lives to guess all the letters in a word,
 otherwise player looses.
-3. The player can guess only one letter at a time.
-4. Before every guess player can see previous guesses.
+3. The player can guess only one letter at a time, full word input
+is not available.
+4. Before every guess player can see previous incorrect guesses.
 5. Before every guess our hangman drawing will be displayed based on the
 number of lives left.
-6. If all letters are guessed right before all lives are over, a win message
-will display.
-7. If all lives are over, a loose message will display
+6. If all letters are guessed right before all lives are over, a "You Win"
+message will show up.
+7. If all lives are over, "You Lose" message will show up
 '''
 
 

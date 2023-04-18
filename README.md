@@ -278,15 +278,66 @@ If player types in "no or n"
 # Testing user stories
 
 * As a first time visitor, I want to see a name and understandable navigation of the game
+    * Main menu and other activities, that needs player desicions and input are made in a clear and understandable way. All the navigation in the game is intuitive and easy to follow by typing in appropriate letters.
 * As a first time visitor, I want to be able to read the rules of the game
+    * For those who play the game for the first time, there is a short game rules, accesseble from the main menu by pressing Q and Enter.
 * As a first time visitor, I want to select difficulty or interesting topic of the game
+    * Right now the difficulty of the game is not implemented, instead of this, player can choose one of three topics or interested theme, from which random word will be chosen. There are both short and long words, in movies and countries two or more words to guess at once are presented. Player has only 6 attempts to guess the word, and this is fair challenge with even chances to win or lose.
 * As a first time visitor, I want to get feedback on my actions in the game
+    * Each action in the game is supported by messages. If player makes wrong choice or input, player will be informed about it and given a chance to try again. Game will accept only correct input according to where player is, in menu, the game or restart the game choice. During the game player will see messages about correct or incorrect choice and win or lose statement in the end of the game, with a question about restart, quit or return to main menu.
 * As a first time visitor, I do not want to meet bugs, that will disturb my game experience
+    * No bugs were detected during testing of the game. Everything works as it should.
 * As a first time visitor, I want to meet a challenge in playing the game
+    * The game makes a challenge by letting a player guess the word in only 6 attempts despite of the length. It can be a short word of 4-5 letter, long word or even more than one word to guess. Chance to win or lose is 50%. In future features can be implemented more understandanle difficulty scale, but rigth now it is set to medium level.
 
+# Deployment
 
+## Deploying
 
+1. Go to the Heroku Dashboard.
+2. Click New in right upper corner.
+3. Select to create a new app.
+4. Enter new app name and click "Create app"
+5. Add Config Var's for Creds and Port if needed.
+6. Set the buildbacks to Python and NodeJS in that order.
+7. Link the Heroku app to the GitHub repository.
+8. Click on Deploy.
+9. View your app in terminal. [My hangman game on Heroku](https://sports-hangman.herokuapp.com/)
 
+## Creating a fork
+1. Navigate to the [repository](https://github.com/GenaGrig/hangman-game-python.git)
+2. In the top-right corner of the page click on the fork button and select create a fork.
+3. You can change the name of the fork and add description.
+4. Choose to copy only the main branch or all branches to the new fork.
+5. Click Create a Fork. A repository should appear in your GitHub.
+
+## Cloning a repository
+1. Navigate to the [repository](https://github.com/GenaGrig/hangman-game-python.git)
+2. Click on the Code button on top of the repository and copy the link.
+3. Open Git Bash and change the working directory to the location where you want the cloned directory.
+4. Type git clone and then paste the link.
+5. Press Enter to create your local clone.
+
+# Credits
+
+## Content
+
+* README file was written with help of following documents:
+    * Code Institute [README template](https://github.com/Code-Institute-Solutions/readme-template)
+    * GitHubs [Basic writing and formatting syntax](https://docs.github.com/ru/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#headings)
+    * Hints and some structure of README files from existing projects from other CI students
+* Main idea of the game and Python code basics were taken by code along with this video from [CS Students channel](https://youtu.be/ynwB-QfOPRw)
+* Some of code function was written with help of [GitHub Copilot](https://github.com/features/copilot)
+* Colors for text and graphics was taken from the answer in this topic on [stackoverflow.com](https://stackoverflow.com/questions/287871/how-do-i-print-colored-text-to-the-terminal) 
+* Centering strings in python [How to use center() function?](https://www.toppr.com/guides/python-guide/references/methods-and-functions/methods/string/center/python-string-center/#:~:text=To%20center%20align%20a%20text,it%20with%20a%20specified%20character.)
+* Aligning text and input cursor methods was taken from [this website](https://www.tutorialspoint.com/how-to-align-text-strings-using-python#:~:text=By%20specifying%20the%20alignment%20as,followed%20by%20the%20width%20number.)
+* Text to ASCII Art Generator (TAAG)[Link](http://patorjk.com/software/taag/#p=display&h=0&f=Acrobatic&t=Type%20Something%20)
+* Python Formatter and Beautifier [Link](https://codebeautify.org/python-formatter-beautifier#)
+
+# Acknowledgements
+
+* I want to thank my mentor Maranatha Ilesanmi for very good feedback and very useful advices that made my project complete and interesting. Very good ideas from my mentor that was implemented and made project look more solid.
+* I want to thank members on our Slack community for giving feedback and showing their own projects that was inspiring in different ways.
 
 
 
