@@ -330,12 +330,12 @@ All this warnings are results of drawing graphics to show name of the game, you 
     * Code Institute [README template](https://github.com/Code-Institute-Solutions/readme-template)
     * GitHubs [Basic writing and formatting syntax](https://docs.github.com/ru/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#headings)
     * Hints and some structure of README files from existing projects from other CI students
-* Main idea of the game and Python code basics were taken by code along with this video from [CS Students channel](https://youtu.be/ynwB-QfOPRw)
-* Some of code function was written with help of [GitHub Copilot](https://github.com/features/copilot)
-* Colors for text and graphics was taken from the answer in this topic on [stackoverflow.com](https://stackoverflow.com/questions/287871/how-do-i-print-colored-text-to-the-terminal) 
-* Centering strings in python [How to use center() function?](https://www.toppr.com/guides/python-guide/references/methods-and-functions/methods/string/center/python-string-center/#:~:text=To%20center%20align%20a%20text,it%20with%20a%20specified%20character.)
+* Main idea of the game and Python code basics were taken by coding along with this video from [CS Students channel](https://youtu.be/ynwB-QfOPRw)
+* Some of code functions was written with help of [GitHub Copilot](https://github.com/features/copilot)
+* Colors for text and graphics was taken from the answer in [this topic on stackoverflow.com](https://stackoverflow.com/questions/287871/how-do-i-print-colored-text-to-the-terminal) 
+* Centering strings in python - [How to use center() function?](https://www.toppr.com/guides/python-guide/references/methods-and-functions/methods/string/center/python-string-center/#:~:text=To%20center%20align%20a%20text,it%20with%20a%20specified%20character.)
 * Aligning text and input cursor methods was taken from [this website](https://www.tutorialspoint.com/how-to-align-text-strings-using-python#:~:text=By%20specifying%20the%20alignment%20as,followed%20by%20the%20width%20number.)
-* Text to ASCII Art Generator (TAAG)[Link](http://patorjk.com/software/taag/#p=display&h=0&f=Acrobatic&t=Type%20Something%20)
+* Text to ASCII Art Generator (TAAG) [Link](http://patorjk.com/software/taag/#p=display&h=0&f=Acrobatic&t=Type%20Something%20)
 * Python Formatter and Beautifier [Link](https://codebeautify.org/python-formatter-beautifier#)
 
 ## Acknowledgements
